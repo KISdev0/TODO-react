@@ -36,10 +36,18 @@ export const TodoItem = ({
       secondaryAction={
         isEditing ? (
           <>
-            <IconButton aria-label="Сохранить" onClick={handleEdit}>
+            <IconButton
+              sx={{ color: "blue" }}
+              aria-label="Сохранить"
+              onClick={handleEdit}
+            >
               <Check />
             </IconButton>
-            <IconButton aria-label="Закрыть" onClick={handleCancel}>
+            <IconButton
+              sx={{ color: "orange" }}
+              aria-label="Закрыть"
+              onClick={handleCancel}
+            >
               <Close />
             </IconButton>
           </>
@@ -49,6 +57,7 @@ export const TodoItem = ({
               edge="end"
               onClick={() => setIsEditing(true)}
               aria-label="Редактировать"
+              sx={{ color: "blue" }}
             >
               <Edit />
             </IconButton>
@@ -56,6 +65,7 @@ export const TodoItem = ({
               edge="end"
               onClick={() => onDelete(todo.id)}
               aria-label="Удалить"
+              sx={{ color: "orange" }}
             >
               <Delete />
             </IconButton>

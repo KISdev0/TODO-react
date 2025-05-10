@@ -8,7 +8,10 @@ import { TodoList } from "./ui/TodoList/TodoList";
 export function App() {
   const [todos, setToDos] = useState<Todo[]>([]);
   const addTodo = (text: string) => {
-    setToDos([...todos, { id: Date.now(), text: text, completed: false }]);
+    setToDos([
+      ...todos,
+      { id: Date.now(), text: text, completed: false, completedAt: 0 },
+    ]);
   };
 
   const deleteTodo = (id: number) => {
@@ -18,7 +21,13 @@ export function App() {
   const toggleTodo = (id: number) => {
     setToDos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        todo.id === id
+          ? {
+              ...todo,
+              completed: !todo.completed,
+              completedAt: !todo.completed ? Date.now() : 0,
+            }
+          : todo
       )
     );
   };

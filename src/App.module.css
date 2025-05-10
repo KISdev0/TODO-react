@@ -1,0 +1,9 @@
+*,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  color: rgb(61, 177, 255);
+}

@@ -1,4 +1,3 @@
-import * as React from "react";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
@@ -14,17 +13,33 @@ export function TextField({ add }: TextFieldProps) {
     }
     setText("");
   };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleAddTodo();
+    }
+  };
+
   return (
     <Paper
       component="form"
-      sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 400 }}
+      sx={{
+        p: "2px 4px",
+        display: "flex",
+        alignItems: "center",
+        width: 400,
+        mb: "40px",
+      }}
+      onSubmit={(e) => e.preventDefault()}
     >
       <InputBase
         value={text}
         onChange={(e) => setText(e.target.value)}
-        sx={{ ml: 1, flex: 1 }}
+        sx={{ ml: 1, flex: 1, width: "400px" }}
         placeholder="Имя новой задачи"
         inputProps={{ "aria-label": "Имя новой задачи" }}
+        onKeyDown={handleKeyDown}
       />
       <IconButton
         type="button"
