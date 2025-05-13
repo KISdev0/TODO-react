@@ -1,6 +1,6 @@
-import { TodoListProps } from "../../Types";
-import { TodoItem } from "../TodoItem/TodoItem";
-import { Box, Typography } from "@mui/material";
+import { TodoListProps } from "../../types";
+import { Box } from "@mui/material";
+import { TodoComponent } from "./TodoComponent";
 
 export const TodoList = ({
   todos,
@@ -15,52 +15,20 @@ export const TodoList = ({
 
   return (
     <Box>
-      {activeTodos.length > 0 && (
-        <Box>
-          <Typography
-            sx={{ ml: "200px" }}
-            variant="h6"
-            component="h2"
-            gutterBottom
-          >
-            План({activeTodos.length})
-          </Typography>
-          <ul style={{ width: "400px" }}>
-            {activeTodos.map((todo) => (
-              <TodoItem
-                key={todo.id}
-                todo={todo}
-                onDelete={onDelete}
-                onToggle={onToggle}
-                onEdit={onEdit}
-              />
-            ))}
-          </ul>
-        </Box>
-      )}
-      {completedTodos.length > 0 && (
-        <Box>
-          <Typography
-            sx={{ ml: "200px" }}
-            variant="h6"
-            component="h2"
-            gutterBottom
-          >
-            Готово({completedTodos.length})
-          </Typography>
-          <ul style={{ width: "400px" }}>
-            {completedTodos.map((todo) => (
-              <TodoItem
-                key={todo.id}
-                todo={todo}
-                onDelete={onDelete}
-                onToggle={onToggle}
-                onEdit={onEdit}
-              />
-            ))}
-          </ul>
-        </Box>
-      )}
+      <TodoComponent
+        title="План"
+        todos={activeTodos}
+        onDelete={onDelete}
+        onEdit={onEdit}
+        onToggle={onToggle}
+      />
+      <TodoComponent
+        title="Готово"
+        todos={completedTodos}
+        onDelete={onDelete}
+        onEdit={onEdit}
+        onToggle={onToggle}
+      />
     </Box>
   );
 };

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./App.module.css";
-import { Todo } from "./Types";
+import { Todo } from "./types";
 
 import { TextField } from "./ui/TextField/TextField";
 import { TodoList } from "./ui/TodoList/TodoList";
@@ -10,7 +10,7 @@ export function App() {
   const addTodo = (text: string) => {
     setToDos([
       ...todos,
-      { id: Date.now(), text: text, completed: false, completedAt: 0 },
+      { id: Date.now(), text, completed: false, completedAt: 0 },
     ]);
   };
 

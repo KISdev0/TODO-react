@@ -7,7 +7,7 @@ import {
   TextField,
 } from "@mui/material";
 import { Edit, Delete, Check, Close } from "@mui/icons-material";
-import { ToDoItemProps } from "../../Types";
+import { ToDoItemProps } from "../../types";
 import { useState } from "react";
 
 export const TodoItem = ({

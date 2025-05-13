@@ -2,7 +2,7 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import { useState } from "react";
-import { TextFieldProps } from "../../Types";
+import { TextFieldProps } from "../../types";
 
 export function TextField({ add }: TextFieldProps) {
   const [text, setText] = useState<string>("");
@@ -10,8 +10,8 @@ export function TextField({ add }: TextFieldProps) {
   const handleAddTodo = () => {
     if (text.trim() !== "") {
       add(text);
+      setText("");
     }
-    setText("");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {

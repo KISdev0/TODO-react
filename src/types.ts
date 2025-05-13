@@ -9,16 +9,22 @@ export interface TextFieldProps {
   add: (text: string) => void;
 }
 
-export interface ToDoItemProps {
-  todo: Todo;
+export interface TodoActions {
   onDelete: (id: number) => void;
   onToggle: (id: number) => void;
   onEdit: (id: number, newText: string) => void;
 }
 
-export interface TodoListProps {
+export interface ToDoItemProps extends TodoActions {
+  todo: Todo;
+}
+
+export interface TodoListProps extends TodoActions {
   todos: Todo[];
-  onDelete: (id: number) => void;
-  onToggle: (id: number) => void;
-  onEdit: (id: number, newText: string) => void;
+}
+
+export interface TodoComponentProps extends TodoActions{
+  title: string;
+  todos: Todo[];
+
 }
