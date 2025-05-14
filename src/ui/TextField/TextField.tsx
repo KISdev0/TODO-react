@@ -7,17 +7,11 @@ import { TextFieldProps } from "../../types";
 export function TextField({ add }: TextFieldProps) {
   const [text, setText] = useState<string>("");
 
-  const handleAddTodo = () => {
+  const handleAddTodo = (e: React.FormEvent) => {
+    e.preventDefault();
     if (text.trim() !== "") {
       add(text);
       setText("");
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleAddTodo();
     }
   };
 
@@ -31,7 +25,7 @@ export function TextField({ add }: TextFieldProps) {
         width: 400,
         mb: "40px",
       }}
-      onSubmit={(e) => e.preventDefault()}
+      onSubmit={handleAddTodo}
     >
       <InputBase
         value={text}
@@ -39,7 +33,6 @@ export function TextField({ add }: TextFieldProps) {
         sx={{ ml: 1, flex: 1, width: "400px" }}
         placeholder="Имя новой задачи"
         inputProps={{ "aria-label": "Имя новой задачи" }}
-        onKeyDown={handleKeyDown}
       />
       <IconButton
         type="button"
